@@ -4,11 +4,11 @@ All stuff (Dockerfile, ...) to generate Docker image for jekyll+pandoc+rspec
 ## Usage
 Suppose you have a Jekyll site in C:\tmp\minimal
 
-> mkdir /tmp/jekpandocker
+> cd /tmp
 
 > git clone git clone https://github.com/prodageo/jekpandocker
 
-> cd jekpandocker
+> cd /tmp/jekpandocker
 
 > docker build -t jekpandocker-image .
 
