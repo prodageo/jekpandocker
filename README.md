@@ -2,10 +2,15 @@
 All stuff (Dockerfile, ...) to generate Docker image for jekyll+pandoc+rspec
 
 ## Usage
-Suppose you have a Jekyll site in C:\tmp\minimal
+
+### Prerequisites
+- Suppose your desktop is Windows 10 (Powershell), [Git installed](https://gitforwindows.org/), Docker installed and running (as administrator).
+- Have a Jekyll site in C:\tmp\minimal
 
 ### Commands
-> 0A> cd /tmp
+> 0A> open a Windows Powershell command (as administrator)
+
+> 0B> cd /tmp
 
 > 1A> git clone git clone https://github.com/prodageo/jekpandocker
 
