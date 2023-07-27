@@ -24,7 +24,7 @@ All stuff (Dockerfile, ...) to generate Docker image for jekyll+pandoc+rspec
 
 ### Notes about some commands
 #### 2A
-This [command](https://stackoverflow.com/a/54335814/12824964) checks the line endings of files that will be read in the container. If returns false, check the [git attribute value of core.autocrlf](https://stackoverflow.com/a/20653073/12824964).
+This [command](https://stackoverflow.com/a/54335814/12824964) checks the line endings of files that will be read in the container. If returns false, probably the line endings of files have been set to crlf (\r\n) by git clone, check the [git attribute value of core.autocrlf](https://stackoverflow.com/a/20653073/12824964).
 Credits : [Charles Ross](https://stackoverflow.com/users/1337544/charles-ross), [Antony Hatchkins](https://stackoverflow.com/users/237105/antony-hatchkins)
 
 # Credits
