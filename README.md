@@ -9,13 +9,13 @@ Suppose you have a Jekyll site in C:\tmp\minimal
 
 > 1A> git clone git clone https://github.com/prodageo/jekpandocker
 
-2A> (Get-Content 'bundle' -Raw) -match "\n$"
+> 2A> (Get-Content 'bundle' -Raw) -match "\n$"
 
-3A> cd /tmp/jekpandocker
+> 3A> cd /tmp/jekpandocker
 
-4A> docker build -t jekpandocker-image .
+> 4A> docker build -t jekpandocker-image .
 
-5A> docker run --rm --name jekpandocker-container -v "C:\tmp\minimal\:/srv/jekyll/" jekpandocker-image
+> 5A> docker run --rm --name jekpandocker-container -v "C:\tmp\minimal\:/srv/jekyll/" jekpandocker-image
 
 ### Notes about some commands
 #### 2A
