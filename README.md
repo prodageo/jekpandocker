@@ -5,9 +5,9 @@ All stuff (Dockerfile, ...) to generate Docker image for jekyll+pandoc+rspec
 Suppose you have a Jekyll site in C:\tmp\minimal
 
 ### Commands
-0A> cd /tmp
+> 0A> cd /tmp
 
-1A> git clone git clone https://github.com/prodageo/jekpandocker
+> 1A> git clone git clone https://github.com/prodageo/jekpandocker
 
 2A> (Get-Content 'bundle' -Raw) -match "\n$"
 
