@@ -1,5 +1,5 @@
 # jekpandocker
-All stuff (Dockerfile, ...) to generate Docker image for jekyll+pandoc+rspec
+All stuff (Dockerfile, ...) to generate Docker image for jekyll+pandoc+pdflatex+rspec
 
 ## Usage
 
