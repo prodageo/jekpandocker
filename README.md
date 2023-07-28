@@ -1,5 +1,5 @@
 # jekpandocker
-All stuff (Dockerfile, ...) to generate Docker image for jekyll+pandoc+rspec
+All stuff (Dockerfile, ...) to generate Docker image for jekyll+pandoc+pdflatex+rspec
 
 ## Usage
 
@@ -14,7 +14,7 @@ All stuff (Dockerfile, ...) to generate Docker image for jekyll+pandoc+rspec
 
 > 1A> git clone git clone https://github.com/prodageo/jekpandocker
 
-> 2A> (Get-Content 'bundle' -Raw) -match "\n$"
+> 2A> (Get-Content 'copy/all/usr/jekyll/bin/bundle' -Raw) -match "\n$"
 
 > 3A> cd /tmp/jekpandocker
 
