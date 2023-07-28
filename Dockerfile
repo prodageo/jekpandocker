@@ -6,8 +6,15 @@ FROM pandoc/core:${pandoc_version} AS pandoc-base
 LABEL maintainer "Frederic BAUCHER <fred@baucher.net>"
 COPY copy/all /
 
+
 #
 # EnvVars
+
+# RSPEC, CAPYBARA
+ENV RSPEC=ALPINE
+ENV RSPEC_URL=http://localhost:4000
+
+
 # Ruby
 #
 
@@ -148,6 +155,11 @@ RUN gem install jekyll
     vips-tools \
     cmake
 # <% end %>
+
+# stuff for testing : rspec, capybara
+RUN apk --no-cache add \
+	chromium-chromedriver \ # https://stackoverflow.com/a/55327609
+	build-base # https://stackoverflow.com/questions/72663421/fail-to-install-install-racc-v-1-6-0#comment128898351_72663421
 
 RUN mkdir -p $JEKYLL_VAR_DIR
 RUN mkdir -p $JEKYLL_DATA_DIR
