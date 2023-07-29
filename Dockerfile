@@ -1,7 +1,8 @@
 ARG pandoc_version=3.1.1
 ARG jekyll_version=4.2.2
 
-FROM pandoc/core:${pandoc_version} AS pandoc-base
+# FROM pandoc/core:${pandoc_version} AS pandoc-base
+FROM pandoc/latex AS pandoc-base
 
 LABEL maintainer "Frederic BAUCHER <fred@baucher.net>"
 COPY copy/all /
@@ -10,8 +11,9 @@ COPY copy/all /
 #
 # EnvVars
 
+# https://vsupalov.com/docker-arg-env-variable-guide/
 # RSPEC, CAPYBARA
-ENV RSPEC=ALPINE
+ENV RSPEC_OS=ALPINE
 ENV RSPEC_URL=http://localhost:4000
 
 
@@ -157,9 +159,11 @@ RUN gem install jekyll
 # <% end %>
 
 # stuff for testing : rspec, capybara
+# https://stackoverflow.com/a/55327609 => chromium-chromedriver
+# https://stackoverflow.com/questions/72663421/fail-to-install-install-racc-v-1-6-0#comment128898351_72663421 => build-base
 RUN apk --no-cache add \
-	chromium-chromedriver \ # https://stackoverflow.com/a/55327609
-	build-base # https://stackoverflow.com/questions/72663421/fail-to-install-install-racc-v-1-6-0#comment128898351_72663421
+	chromium-chromedriver \ 
+	build-base 
 
 RUN mkdir -p $JEKYLL_VAR_DIR
 RUN mkdir -p $JEKYLL_DATA_DIR
