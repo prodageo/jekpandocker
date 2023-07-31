@@ -88,12 +88,68 @@ RUN cabal update && cabal install \
 
 FROM jekyll/jekyll:${jekyll_version}
 
+# first dirs: dirs on the pandoc-base build image
+# last dir: destination dir on the run image
+
+# copy pandoc stuff
 COPY --from=pandoc-base \
 	/usr/local/bin/pandoc \
 	/usr/local/bin/pandoc-crossref \
 	/root/.cabal/bin/pandoc-sidenote \
 	/usr/local/bin/
 
+# copy texlive stuff
+COPY --from=pandoc-base \
+	/opt/ \	
+	/opt/
+
+####################################### PDF Latex - BEGIN ###################################### 	
+ENV TEXLIVE_BIN=/opt/texlive/texdir/bin/default
+ENV PATH="$TEXLIVE_BIN:$PATH"
+####################################### PDF Latex - END ###################################### 	
+
+
+####################################### PLANTUML - BEGIN ###################################### 
+# Install Additional Tools for System, Pandoc, and Latex
+# RUN apt-get update && apt-get -y install \
+#    curl graphviz librsvg plantuml
+####################################### PLANTUML - END ###################################### 
+
+
+####################################### TUFTE in PDF - BEGIN ###################################### 
+# add the missing packages ! (latex hell)
+
+# pandoc/latex contains biditufte*.cls but not tufte-latex.cls
+# https://github.com/rstudio/rmarkdown/issues/249: maybe this one are missing like in fedora (sudo yum install texlive-tufte-latex texlive-titlesec texlive-units texlive-lipsum)
+# https://github.com/dc-uba/docker-alpine-texlive: add package in an Alpine image
+# Install additional packages
+
+# https://tufte-latex.github.io/tufte-latex/  : list of necessary packages
+## changepage fancyhdr fontenc geometry hyperref  natbib bibentry optparams paralist placeins ragged2e setspace textcase textcomp titlesec titletoc xcolor xifthen
+## optional: beramono helvet mathpazo soul microtype
+### Note microtype package contains letterspace
+
+RUN apk --no-cache add perl wget
+# tlmgr install <NEW_PACKAGES> bytefield algorithms algorithm2e ec fontawesome && \
+# RUN tlmgr install tufte-latex hardwrap
+# RUN tlmgr install changepage fancyhdr fontenc geometry hyperref  natbib bibentry optparams paralist placeins ragged2e setspace textcase textcomp titlesec titletoc xcolor xifthen
+# RUN tlmgr install units morefloats
+# RUN tlmgr install beramono helvet mathpazo soul microtype
+
+# ERROR ! I can't find file `pplr9d'.
+# CORRECTION
+# RUN tlmgr install  palatino mathpazo fpl
+	
+# remove useless commands when running Docker (if you are confident that all package have been identified)
+# RUN apk del perl wget
+
+# Comment for people not fluent in pandoc and latex stuff
+# https://yihui.org/tinytex/#maintenance
+# find the package containing the missing styles (*.sty)
+# - tlmgr search --global --file "/times.sty" => psnfss
+# - tlmgr install psnfss
+####################################### TUFTE in PDF - END ###################################### 	
+	
 RUN apk --no-cache add \
 	gmp \
 	libffi \
