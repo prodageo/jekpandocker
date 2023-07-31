@@ -98,12 +98,13 @@ COPY --from=pandoc-base \
 	/root/.cabal/bin/pandoc-sidenote \
 	/usr/local/bin/
 
+
+####################################### PDF Latex - BEGIN ###################################### 	
 # copy texlive stuff
 COPY --from=pandoc-base \
 	/opt/ \	
 	/opt/
 
-####################################### PDF Latex - BEGIN ###################################### 	
 ENV TEXLIVE_BIN=/opt/texlive/texdir/bin/default
 ENV PATH="$TEXLIVE_BIN:$PATH"
 ####################################### PDF Latex - END ###################################### 	
