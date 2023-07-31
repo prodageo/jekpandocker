@@ -22,10 +22,10 @@ You can visit the image page on [DockerHub](https://hub.docker.com/r/fbab/jekpan
 > docker run --rm --name jekpandocker-container -v "C:\tmp\minimal\:/srv/jekyll/" fbab/jekpandocker jekyll serve
 
 You can then browse your Jekyll site on port 4000
-> browser> http://localhost:4000*
+> browser> http://localhost:4000
 
 ### 2. Load in CI/CD the remote predefined image
-The same image can be reffered in CI/CD scripts
+The same image can be reffered in CI/CD scripts. Visit your Jekyll website at the address delivered by your CI/CD (_Github Pages_, _Gitlab Pages_, ...).
 
 #### Github Actions
 cf https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action
