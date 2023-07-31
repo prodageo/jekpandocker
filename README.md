@@ -2,16 +2,18 @@
 Dockerfile to generate a **Docker** image for helping in [single source publishing](https://en.wikipedia.org/wiki/Single-source_publishing), with all sources of documentation written in [_pandoc markdown_](https://pandoc.org/MANUAL.html#pandocs-markdown) and a publication workflow based on **Jekyll**, with **pandoc** as the Markdown rendering engine and theme based on Tufte. Output expected in HTML (Jekyll) and PDF.
 
 ## Usage
+How to run your Jekyll site in the container provided by _fbab/jekpandocker_ ?
 
 ### Prerequisites
 - Suppose your desktop is Windows 10 (Powershell), [Git installed](https://gitforwindows.org/), Docker installed and running (as administrator).
 - Have a Jekyll site in C:\tmp\minimal
 
-### Download a predefined image on desktop
+### Use on desktop the remote predefined image
 You can visit the image page on [DockerHub](https://hub.docker.com/r/fbab/jekpandocker).
 > docker pull fbab/jekpandocker
+> docker run --rm --name jekpandocker-container -v "C:\tmp\minimal\:/srv/jekyll/" fbab/jekpandocker jekyll serve
 
-### Reuse in CI/CD
+### Load in CI/CD the remote predefined image
 The same image can be reffered in CI/CD scripts
 
 #### Github Actions
