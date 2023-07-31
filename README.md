@@ -1,5 +1,5 @@
 # jekpandocker
-Image for helping in single source publishing, with all source of documentation written in _pandoc markdown_ and a publication workflow based on Jekyll, with pandoc as the Markdown rendering engine and theme based on Tufte. Output expected in HTML (Jekyll) and PDF.
+Dockerfile to generate a **Docker** image for helping in [single source publishing](https://en.wikipedia.org/wiki/Single-source_publishing), with all sources of documentation written in (_pandoc markdown_](https://pandoc.org/MANUAL.html#pandocs-markdown) and a publication workflow based on **Jekyll**, with **pandoc** as the Markdown rendering engine and theme based on Tufte. Output expected in HTML (Jekyll) and PDF.
 
 ## Usage
 
@@ -18,10 +18,9 @@ The same image can be reffered in CI/CD scripts
 cf https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action
 
 #### Gitlab 
+Example of .gitlab-ci.yml
 ```gitlab
-image: palazzo/jekyll-pandoc:4.2.2-3.1.1 # https://hub.docker.com/r/palazzo/jekyll-pandoc/
-# image: palazzo/jekyll-pandoc:latest # does not correct https://gitlab.insa-rouen.fr/fbaucher/p3mm/-/issues/1
-pages:
+image: fbab/jekpandocker
   script:
     - gem install bundler
     - bundle install
