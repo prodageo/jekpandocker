@@ -5,23 +5,23 @@ Dockerfile to generate a **Docker** image for helping in [single source publishi
 How to run your Jekyll site in the container provided by _fbab/jekpandocker_ ?
 
 3 alternative usages described below:
-- Use on desktop the remote predefined image
-- Load in CI/CD the remote predefined image
-- Build on your own
+- 1. Use on desktop the remote predefined image
+- 2. Load in CI/CD the remote predefined image
+- 3. Build on your own
 
 Choose the one that fits your needs !
 
-### Prerequisites
+### 0. Prerequisites
 - Suppose your desktop is Windows 10 (Powershell), [Git installed](https://gitforwindows.org/), Docker installed and running (as administrator).
 - Have a Jekyll site in C:\tmp\minimal
 
-### Use on desktop the remote predefined image
+### 1. Use on desktop the remote predefined image
 You can visit the image page on [DockerHub](https://hub.docker.com/r/fbab/jekpandocker).
 > docker pull fbab/jekpandocker
 
 > docker run --rm --name jekpandocker-container -v "C:\tmp\minimal\:/srv/jekyll/" fbab/jekpandocker jekyll serve
 
-### Load in CI/CD the remote predefined image
+### 2. Load in CI/CD the remote predefined image
 The same image can be reffered in CI/CD scripts
 
 #### Github Actions
@@ -46,7 +46,7 @@ image: fbab/jekpandocker
     # a pages deploy // $CI_COMMIT_REF_NAME
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
 ```
-### Build on your own
+### 3. Build on your own
 > 0A> open a Windows Powershell command (as administrator)
 
 > 0B> cd /tmp
