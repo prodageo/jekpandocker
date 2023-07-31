@@ -1,5 +1,5 @@
 # jekpandocker
-Dockerfile to generate a **Docker** image for helping in [single source publishing](https://en.wikipedia.org/wiki/Single-source_publishing), with all sources of documentation written in (_pandoc markdown_](https://pandoc.org/MANUAL.html#pandocs-markdown) and a publication workflow based on **Jekyll**, with **pandoc** as the Markdown rendering engine and theme based on Tufte. Output expected in HTML (Jekyll) and PDF.
+Dockerfile to generate a **Docker** image for helping in [single source publishing](https://en.wikipedia.org/wiki/Single-source_publishing), with all sources of documentation written in [_pandoc markdown_](https://pandoc.org/MANUAL.html#pandocs-markdown) and a publication workflow based on **Jekyll**, with **pandoc** as the Markdown rendering engine and theme based on Tufte. Output expected in HTML (Jekyll) and PDF.
 
 ## Usage
 
