@@ -51,7 +51,7 @@ image: fbab/jekpandocker
 
 > 0B> cd /tmp
 
-> 1A> git clone git clone https://github.com/prodageo/jekpandocker
+> 1A> git clone https://github.com/prodageo/jekpandocker
 
 > 2A> (Get-Content 'copy/all/usr/jekyll/bin/bundle' -Raw) -match "\n$"
 
