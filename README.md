@@ -3,10 +3,12 @@ Dockerfile to generate a **Docker** image for helping in [single source publishi
 
 ## Usage
 How to run your Jekyll site in the container provided by _fbab/jekpandocker_ ?
+
 3 alternative usages described below:
 - Use on desktop the remote predefined image
 - Load in CI/CD the remote predefined image
 - Build on your own
+
 Choose the one that fits your needs !
 
 ### Prerequisites
