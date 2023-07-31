@@ -1,5 +1,5 @@
 # jekpandocker
-All stuff (Dockerfile, ...) to generate Docker image for jekyll+pandoc+pdflatex+rspec
+Image for helping in single source publishing, with all source of documentation written in _pandoc markdown_ and a publication workflow based on Jekyll, with pandoc as the Markdown rendering engine and theme based on Tufte. Output expected in HTML (Jekyll) and PDF.
 
 ## Usage
 
@@ -7,7 +7,37 @@ All stuff (Dockerfile, ...) to generate Docker image for jekyll+pandoc+pdflatex+
 - Suppose your desktop is Windows 10 (Powershell), [Git installed](https://gitforwindows.org/), Docker installed and running (as administrator).
 - Have a Jekyll site in C:\tmp\minimal
 
-### Commands
+### Download a predefined image on desktop
+You can visit the image page on [DockerHub](https://hub.docker.com/r/fbab/jekpandocker).
+> docker pull fbab/jekpandocker
+
+### Reuse in CI/CD
+The same image can be reffered in CI/CD scripts
+
+#### Github Actions
+cf https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action
+
+#### Gitlab 
+```gitlab
+image: palazzo/jekyll-pandoc:4.2.2-3.1.1 # https://hub.docker.com/r/palazzo/jekyll-pandoc/
+# image: palazzo/jekyll-pandoc:latest # does not correct https://gitlab.insa-rouen.fr/fbaucher/p3mm/-/issues/1
+pages:
+  script:
+    - gem install bundler
+    - bundle install
+    - bundle exec jekyll build -d public --trace --config _config.yml,_config_gitlab.yml
+    - pwd
+    - find . -name "*"
+  artifacts:
+    paths:
+      # The folder that contains the files to be exposed at the Page URL ...
+      - public
+  rules:
+    # This ensures that only pushes to the default branch will trigger
+    # a pages deploy // $CI_COMMIT_REF_NAME
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+```
+### Build on your own
 > 0A> open a Windows Powershell command (as administrator)
 
 > 0B> cd /tmp
