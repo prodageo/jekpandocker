@@ -1,27 +1,39 @@
 # jekpandocker
-Image for helping in single source publishing, with all source of documentation written in _pandoc markdown_ and a publication workflow based on Jekyll, with pandoc as the Markdown rendering engine and theme based on Tufte. Output expected in HTML (Jekyll) and PDF.
+Dockerfile to generate a **Docker** image for helping in [single source publishing](https://en.wikipedia.org/wiki/Single-source_publishing), with all sources of documentation written in [_pandoc markdown_](https://pandoc.org/MANUAL.html#pandocs-markdown) and a publication workflow based on **Jekyll**, with **pandoc** as the Markdown rendering engine and theme based on Tufte. Output expected in HTML (Jekyll) and PDF.
 
 ## Usage
+How to run your Jekyll site in the container provided by _fbab/jekpandocker_ ?
 
-### Prerequisites
+3 alternative usages described below:
+- 1. Use on desktop the remote predefined image
+- 2. Load in CI/CD the remote predefined image
+- 3. Build on your own
+
+Choose the one that fits your needs !
+
+### 0. Prerequisites
 - Suppose your desktop is Windows 10 (Powershell), [Git installed](https://gitforwindows.org/), Docker installed and running (as administrator).
 - Have a Jekyll site in C:\tmp\minimal
 
-### Download a predefined image on desktop
+### 1. Use on desktop the remote predefined image
 You can visit the image page on [DockerHub](https://hub.docker.com/r/fbab/jekpandocker).
 > docker pull fbab/jekpandocker
 
-### Reuse in CI/CD
-The same image can be reffered in CI/CD scripts
+> docker run --rm --name jekpandocker-container -v "C:\tmp\minimal\:/srv/jekyll/" fbab/jekpandocker jekyll serve
+
+You can then browse your Jekyll site on port 4000
+> browser> http://localhost:4000
+
+### 2. Load in CI/CD the remote predefined image
+The same image can be reffered in CI/CD scripts. Visit your Jekyll website at the address delivered by your CI/CD (_Github Pages_, _Gitlab Pages_, ...).
 
 #### Github Actions
 cf https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action
 
 #### Gitlab 
+Example of .gitlab-ci.yml
 ```gitlab
-image: palazzo/jekyll-pandoc:4.2.2-3.1.1 # https://hub.docker.com/r/palazzo/jekyll-pandoc/
-# image: palazzo/jekyll-pandoc:latest # does not correct https://gitlab.insa-rouen.fr/fbaucher/p3mm/-/issues/1
-pages:
+image: fbab/jekpandocker
   script:
     - gem install bundler
     - bundle install
@@ -37,12 +49,12 @@ pages:
     # a pages deploy // $CI_COMMIT_REF_NAME
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
 ```
-### Build on your own
+### 3. Build on your own
 > 0A> open a Windows Powershell command (as administrator)
 
 > 0B> cd /tmp
 
-> 1A> git clone git clone https://github.com/prodageo/jekpandocker
+> 1A> git clone https://github.com/prodageo/jekpandocker
 
 > 2A> (Get-Content 'copy/all/usr/jekyll/bin/bundle' -Raw) -match "\n$"
 
