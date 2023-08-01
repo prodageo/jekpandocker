@@ -97,7 +97,16 @@ COPY --from=pandoc-base \
 	/usr/local/bin/pandoc-crossref \
 	/root/.cabal/bin/pandoc-sidenote \
 	/usr/local/bin/
+	
+# rsvg-convert (used to convert images in pandoc markdown source file). Available in librsvg.
+# for info, under windows can be added with: choco install rsvg-convert
+RUN apk --no-cache add \
+	librsvg
+	# curl \
+	# graphviz \
+	# plantuml
 
+	
 
 ####################################### PDF Latex - BEGIN ###################################### 	
 # copy texlive stuff
